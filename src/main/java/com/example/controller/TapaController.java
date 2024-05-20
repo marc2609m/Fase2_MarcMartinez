@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("tapas")
+@RequestMapping("/tapas")
 public class TapaController {
 	@Autowired
 	private TapaDAO tapaDAO;
 	
 	@GetMapping
-	public List<Tapa> getAll(){
-		return tapaDAO.getAll();
+	public List<Tapa> getAll(){ 	 
+		List<Tapa> tapas = null;
+
+		tapas = tapaDAO.getAll();
+
+		return tapas;
 	}
+
 	
 	@GetMapping
 	Optional<Tapa> read(Long id){
